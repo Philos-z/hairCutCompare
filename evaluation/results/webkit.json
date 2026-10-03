@@ -1,0 +1,2564 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-03T15:08:21.812Z",
+  "engine": "webkit",
+  "browserVersion": "26.6",
+  "localOrigin": "http://127.0.0.1:5173",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6 Safari/605.1.15",
+  "qualityConfigVersion": "web-research-1",
+  "source": {
+    "path": "tests/fixtures/white-house-portrait.jpg",
+    "width": 820,
+    "height": 1024,
+    "bytes": 176561,
+    "sha256": "a6f11efaa834706db23f275b6115058fa87fc7f14362681e6abe14e82749de3e",
+    "attribution": "tests/fixtures/ATTRIBUTION.md"
+  },
+  "modelLock": {
+    "schemaVersion": 1,
+    "tasksVisionVersion": "0.10.32",
+    "assets": [
+      {
+        "path": "models/face_landmarker.task",
+        "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+        "bytes": 3758596,
+        "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+      },
+      {
+        "path": "models/hair_segmenter.tflite",
+        "url": "https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/1/hair_segmenter.tflite",
+        "bytes": 781618,
+        "sha256": "2628cf3ce5f695f604cbea2841e00befcaa3624bf80caf3664bef2656d59bf84"
+      },
+      {
+        "path": "vendor/mediapipe/vision_wasm_internal.js",
+        "bytes": 204816,
+        "sha256": "6f6b86509cf9e163ea1cfec7edc8cf53732699c04781e4c21c557c1ba402310e"
+      },
+      {
+        "path": "vendor/mediapipe/vision_wasm_internal.wasm",
+        "bytes": 11453626,
+        "sha256": "cb3ec20026a9aecc2a81a93c25630ceb5389297ddb7a5f0bd61dd09cde606b9b"
+      },
+      {
+        "path": "vendor/mediapipe/vision_wasm_nosimd_internal.js",
+        "bytes": 204669,
+        "sha256": "9f8fc960e363f0fb2f42f7937b97ae9cf9a5630490f71031fa90caa9bb121938"
+      },
+      {
+        "path": "vendor/mediapipe/vision_wasm_nosimd_internal.wasm",
+        "bytes": 10647962,
+        "sha256": "924274fcd5ac8985f6570a8573e7971b7bd2d580ba1b8f3beb0ba8f95db6347c"
+      }
+    ]
+  },
+  "limitations": [
+    "One public-domain portrait; eight controlled cases are not eight independent people or physical captures.",
+    "All derived geometry uses 2D canvas transforms: no changed head yaw/pitch, camera perspective, lens, or physical lighting.",
+    "simulated-yaw-35 only changes metadata to exercise the pose gate; actual pixels/head angle do not change.",
+    "qualityWithSimulatedConfirmation and regionalMetrics are research-only automatic candidates, not human-reviewed measurements.",
+    "Reprojection metrics compare to the known canvas operation using baseline model landmarks; no independent human ground truth.",
+    "Confidence scores are uncalibrated model values, not accuracy probabilities; timing depends on local hardware and first-run model loading.",
+    "A physical same-person/same-hair angle, distance, light and style cohort plus manual reference annotations is still required."
+  ],
+  "externalRequests": [],
+  "cases": [
+    {
+      "id": "baseline",
+      "label": "Baseline, identical content, common JPEG encoding",
+      "operation": {
+        "id": "baseline",
+        "label": "Baseline, identical content, common JPEG encoding",
+        "scale": 1,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 1
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 2.075343610351836,
+        "pitch": 3.60152420925785,
+        "roll": 0.8665888793218626
+      },
+      "qualityPose": {
+        "yaw": 2.075343610351836,
+        "pitch": 3.60152420925785,
+        "roll": 0.8665888793218626
+      },
+      "inferenceMilliseconds": 3071,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.898492373156572,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.44531941413879395,
+            "y": 0.17371436953544617
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.5456123948097229,
+            "y": 0.17289775609970093
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.49673670530319214,
+            "y": 0.226126030087471
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.4964597523212433,
+            "y": 0.3392159640789032
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.3670731707317073,
+            "y": 0.1787109375
+          },
+          {
+            "x": 0.3597560975609756,
+            "y": 0.1630859375
+          },
+          {
+            "x": 0.348780487804878,
+            "y": 0.15625
+          },
+          {
+            "x": 0.34512195121951217,
+            "y": 0.1474609375
+          },
+          {
+            "x": 0.348780487804878,
+            "y": 0.134765625
+          },
+          {
+            "x": 0.3463414634146341,
+            "y": 0.1142578125
+          },
+          {
+            "x": 0.3573170731707317,
+            "y": 0.0908203125
+          },
+          {
+            "x": 0.36341463414634145,
+            "y": 0.087890625
+          },
+          {
+            "x": 0.3573170731707317,
+            "y": 0.0810546875
+          },
+          {
+            "x": 0.3597560975609756,
+            "y": 0.07421875
+          },
+          {
+            "x": 0.374390243902439,
+            "y": 0.0703125
+          },
+          {
+            "x": 0.3926829268292683,
+            "y": 0.0576171875
+          },
+          {
+            "x": 0.3926829268292683,
+            "y": 0.0458984375
+          },
+          {
+            "x": 0.4073170731707317,
+            "y": 0.046875
+          },
+          {
+            "x": 0.4378048780487805,
+            "y": 0.03125
+          },
+          {
+            "x": 0.4658536585365854,
+            "y": 0.0244140625
+          },
+          {
+            "x": 0.5024390243902439,
+            "y": 0.0234375
+          },
+          {
+            "x": 0.5329268292682927,
+            "y": 0.029296875
+          },
+          {
+            "x": 0.5609756097560976,
+            "y": 0.037109375
+          },
+          {
+            "x": 0.5914634146341463,
+            "y": 0.0576171875
+          },
+          {
+            "x": 0.6109756097560975,
+            "y": 0.060546875
+          },
+          {
+            "x": 0.6060975609756097,
+            "y": 0.0634765625
+          },
+          {
+            "x": 0.6060975609756097,
+            "y": 0.0732421875
+          },
+          {
+            "x": 0.6121951219512195,
+            "y": 0.078125
+          },
+          {
+            "x": 0.6268292682926829,
+            "y": 0.1083984375
+          },
+          {
+            "x": 0.6268292682926829,
+            "y": 0.138671875
+          },
+          {
+            "x": 0.6317073170731707,
+            "y": 0.1484375
+          },
+          {
+            "x": 0.6365853658536585,
+            "y": 0.1494140625
+          },
+          {
+            "x": 0.6353658536585366,
+            "y": 0.1630859375
+          },
+          {
+            "x": 0.6219512195121951,
+            "y": 0.1650390625
+          },
+          {
+            "x": 0.6158536585365854,
+            "y": 0.169921875
+          }
+        ],
+        "fringe": [
+          {
+            "x": 0.48109756097560974,
+            "y": 0.06591796875
+          },
+          {
+            "x": 0.5469512195121952,
+            "y": 0.06982421875
+          }
+        ],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.29367605729909646,
+        "darkFraction": 0.09988567073170732,
+        "brightFraction": 0.002305640243902439,
+        "sharpness": 0.048474264784615854
+      },
+      "knownReferenceToCurrent": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 0,
+        "registrationProbeRMSEPixels": 0,
+        "fittingResidualPixels": 0,
+        "scaleError": 0,
+        "rotationErrorDegrees": 0,
+        "translationErrorPixels": 0
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "comparable",
+        "issues": []
+      },
+      "regionalMetrics": [
+        {
+          "kind": "outer",
+          "label": "外轮廓",
+          "signedOffset": 0,
+          "absoluteOffset": 0,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": 0,
+            "heightChangePercent": 0
+          }
+        },
+        {
+          "kind": "fringe",
+          "label": "刘海下缘",
+          "signedOffset": 0,
+          "absoluteOffset": 0,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": 0,
+            "heightChangePercent": 0
+          }
+        }
+      ],
+      "sample": {
+        "path": "evaluation/samples/webkit/baseline.jpg",
+        "bytes": 253606,
+        "sha256": "44f6161d2b2836eb7599cf7bd0478b258f3b89daf7ef427fce31497f879e8681"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/baseline.analysis.jpg",
+        "bytes": 252931,
+        "sha256": "180592844daf897de43273854a0c4e6dc72df340288da081577e2965397d1ec1"
+      }
+    },
+    {
+      "id": "roll-translation",
+      "label": "Canvas +8 degree roll and (+20,-10) pixel translation",
+      "operation": {
+        "id": "roll-translation",
+        "label": "Canvas +8 degree roll and (+20,-10) pixel translation",
+        "scale": 1,
+        "roll": 8,
+        "shiftX": 20,
+        "shiftY": -10,
+        "exposure": 1
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 2.9039502059236786,
+        "pitch": 4.142907234391706,
+        "roll": -6.627721992213687
+      },
+      "qualityPose": {
+        "yaw": 2.9039502059236786,
+        "pitch": 4.142907234391706,
+        "roll": -6.627721992213687
+      },
+      "inferenceMilliseconds": 114,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.8985527141867162,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.5279678404331207,
+            "y": 0.16091490536928177
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.6261845827102661,
+            "y": 0.171301931142807
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.5711456537246704,
+            "y": 0.2203475832939148
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.5497907996177673,
+            "y": 0.3258991539478302
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.44634146341463415,
+            "y": 0.1640625
+          },
+          {
+            "x": 0.4475609756097561,
+            "y": 0.1533203125
+          },
+          {
+            "x": 0.43658536585365854,
+            "y": 0.1376953125
+          },
+          {
+            "x": 0.4329268292682927,
+            "y": 0.11328125
+          },
+          {
+            "x": 0.4329268292682927,
+            "y": 0.0966796875
+          },
+          {
+            "x": 0.4353658536585366,
+            "y": 0.0888671875
+          },
+          {
+            "x": 0.4402439024390244,
+            "y": 0.0869140625
+          },
+          {
+            "x": 0.44390243902439025,
+            "y": 0.0625
+          },
+          {
+            "x": 0.44146341463414634,
+            "y": 0.0537109375
+          },
+          {
+            "x": 0.46463414634146344,
+            "y": 0.0517578125
+          },
+          {
+            "x": 0.49146341463414633,
+            "y": 0.04296875
+          },
+          {
+            "x": 0.4926829268292683,
+            "y": 0.03515625
+          },
+          {
+            "x": 0.47804878048780486,
+            "y": 0.0302734375
+          },
+          {
+            "x": 0.5304878048780488,
+            "y": 0.025390625
+          },
+          {
+            "x": 0.5548780487804879,
+            "y": 0.015625
+          },
+          {
+            "x": 0.5926829268292683,
+            "y": 0.015625
+          },
+          {
+            "x": 0.6341463414634146,
+            "y": 0.025390625
+          },
+          {
+            "x": 0.6621951219512195,
+            "y": 0.037109375
+          },
+          {
+            "x": 0.6878048780487804,
+            "y": 0.060546875
+          },
+          {
+            "x": 0.7,
+            "y": 0.06640625
+          },
+          {
+            "x": 0.7,
+            "y": 0.07421875
+          },
+          {
+            "x": 0.723170731707317,
+            "y": 0.1279296875
+          },
+          {
+            "x": 0.7134146341463414,
+            "y": 0.1337890625
+          },
+          {
+            "x": 0.7073170731707317,
+            "y": 0.1435546875
+          },
+          {
+            "x": 0.7097560975609756,
+            "y": 0.16796875
+          },
+          {
+            "x": 0.698780487804878,
+            "y": 0.17578125
+          }
+        ],
+        "fringe": [
+          {
+            "x": 0.5871951219512195,
+            "y": 0.06201171875
+          },
+          {
+            "x": 0.6274390243902439,
+            "y": 0.06689453125
+          }
+        ],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.3216144395324665,
+        "darkFraction": 0.09609375,
+        "brightFraction": 0.0016006097560975609,
+        "sharpness": 0.04536890362268842
+      },
+      "knownReferenceToCurrent": {
+        "a": 0.9902680687415704,
+        "b": 0.13917310096006544,
+        "tx": 95.24671950750964,
+        "ty": -62.078222589310826,
+        "scale": 1,
+        "rotation": 0.13962634015954636,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 0.9902680687415701,
+        "b": -0.1391731009600654,
+        "tx": -85.68016624082804,
+        "ty": 74.72986290455982,
+        "scale": 1,
+        "rotation": -0.13962634015954636,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1.0157749659018016,
+        "b": -0.14424557018382542,
+        "tx": -99.44316881436762,
+        "ty": 72.30115606274418,
+        "scale": 1.0259656748012884,
+        "rotation": -0.14106228569922122,
+        "residual": 1.6866326743121214
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 2.809254,
+        "registrationProbeRMSEPixels": 2.305344,
+        "fittingResidualPixels": 1.686633,
+        "scaleError": 0.025966,
+        "rotationErrorDegrees": -0.082274,
+        "translationErrorPixels": 13.975652
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "comparable",
+        "issues": []
+      },
+      "regionalMetrics": [
+        {
+          "kind": "outer",
+          "label": "外轮廓",
+          "signedOffset": 5.5284949631141656,
+          "absoluteOffset": 5.573876328341107,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": 3.083807585987941,
+            "heightChangePercent": 7.991989458574134
+          }
+        },
+        {
+          "kind": "fringe",
+          "label": "刘海下缘",
+          "signedOffset": -1.9040901623690931,
+          "absoluteOffset": 1.9266872615997452,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": -36.58925606355808,
+            "heightChangePercent": -92.03072466393039
+          }
+        }
+      ],
+      "sample": {
+        "path": "evaluation/samples/webkit/roll-translation.jpg",
+        "bytes": 273991,
+        "sha256": "7ef5b61b33949ca67d7ebfa439cbb71014a2f4ad1fb84d4947fa8677b7634ef3"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/roll-translation.analysis.jpg",
+        "bytes": 273151,
+        "sha256": "d055ee4ea7cbd13032a30004f6efc9ded7962f8683b8315d48ec2dffcd58b115"
+      }
+    },
+    {
+      "id": "framing-mild",
+      "label": "Canvas 0.82 framing; no real camera-distance or perspective change",
+      "operation": {
+        "id": "framing-mild",
+        "label": "Canvas 0.82 framing; no real camera-distance or perspective change",
+        "scale": 0.82,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 1
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 2.7523063360310385,
+        "pitch": 3.218539673174074,
+        "roll": 1.2252186592930472
+      },
+      "qualityPose": {
+        "yaw": 2.7523063360310385,
+        "pitch": 3.218539673174074,
+        "roll": 1.2252186592930472
+      },
+      "inferenceMilliseconds": 108,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。",
+          "未可靠识别刘海下缘，可以手工补画。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.8837530465038003,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.45461635291576385,
+            "y": 0.23216082900762558
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.537613183259964,
+            "y": 0.23046385496854782
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.49898114800453186,
+            "y": 0.2762628495693207
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.49901527166366577,
+            "y": 0.36259716749191284
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.39146341463414636,
+            "y": 0.234375
+          },
+          {
+            "x": 0.3878048780487805,
+            "y": 0.2275390625
+          },
+          {
+            "x": 0.3829268292682927,
+            "y": 0.2265625
+          },
+          {
+            "x": 0.37682926829268293,
+            "y": 0.2119140625
+          },
+          {
+            "x": 0.36829268292682926,
+            "y": 0.2080078125
+          },
+          {
+            "x": 0.3804878048780488,
+            "y": 0.1669921875
+          },
+          {
+            "x": 0.41585365853658535,
+            "y": 0.130859375
+          },
+          {
+            "x": 0.42317073170731706,
+            "y": 0.130859375
+          },
+          {
+            "x": 0.4304878048780488,
+            "y": 0.123046875
+          },
+          {
+            "x": 0.44878048780487806,
+            "y": 0.119140625
+          },
+          {
+            "x": 0.47317073170731705,
+            "y": 0.1044921875
+          },
+          {
+            "x": 0.49878048780487805,
+            "y": 0.095703125
+          },
+          {
+            "x": 0.5036585365853659,
+            "y": 0.095703125
+          },
+          {
+            "x": 0.5085365853658537,
+            "y": 0.1044921875
+          },
+          {
+            "x": 0.526829268292683,
+            "y": 0.11328125
+          },
+          {
+            "x": 0.5463414634146342,
+            "y": 0.1162109375
+          },
+          {
+            "x": 0.5695121951219512,
+            "y": 0.1328125
+          },
+          {
+            "x": 0.5890243902439024,
+            "y": 0.138671875
+          },
+          {
+            "x": 0.5902439024390244,
+            "y": 0.1552734375
+          },
+          {
+            "x": 0.6134146341463415,
+            "y": 0.1796875
+          },
+          {
+            "x": 0.6121951219512195,
+            "y": 0.189453125
+          },
+          {
+            "x": 0.6012195121951219,
+            "y": 0.1953125
+          },
+          {
+            "x": 0.6073170731707317,
+            "y": 0.224609375
+          },
+          {
+            "x": 0.5975609756097561,
+            "y": 0.2294921875
+          }
+        ],
+        "fringe": [],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.4552412967029265,
+        "darkFraction": 0.06526295731707317,
+        "brightFraction": 0.0010099085365853659,
+        "sharpness": 0.04393180609896232
+      },
+      "knownReferenceToCurrent": {
+        "a": 0.82,
+        "b": 0,
+        "tx": 73.80000000000001,
+        "ty": 92.16000000000003,
+        "scale": 0.82,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1.2195121951219514,
+        "b": 0,
+        "tx": -90.00000000000003,
+        "ty": -112.39024390243907,
+        "scale": 1.2195121951219512,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1.254141771612226,
+        "b": 0.016396834526239933,
+        "tx": -100.31535334926541,
+        "ty": -126.87259492959075,
+        "scale": 1.2542489543488302,
+        "rotation": 0.013073402655088046,
+        "residual": 2.2135724145631923
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 3.146226,
+        "registrationProbeRMSEPixels": 3.223961,
+        "fittingResidualPixels": 2.213572,
+        "scaleError": 0.034737,
+        "rotationErrorDegrees": 0.749051,
+        "translationErrorPixels": 17.780467
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "comparable",
+        "issues": []
+      },
+      "regionalMetrics": [
+        {
+          "kind": "outer",
+          "label": "外轮廓",
+          "signedOffset": 5.520143130414684,
+          "absoluteOffset": 5.867289239636995,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": 5.672805144484694,
+            "heightChangePercent": 11.097616434356583
+          }
+        }
+      ],
+      "sample": {
+        "path": "evaluation/samples/webkit/framing-mild.jpg",
+        "bytes": 219350,
+        "sha256": "98ec549fa38072939b41904fc99bf660b92afe9efcd52c6bf141b993bc41ed72"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/framing-mild.analysis.jpg",
+        "bytes": 218216,
+        "sha256": "a9728670a9d8279bbc50ce1b848d736112707d29a06e1b29bf034eee187b4d69"
+      }
+    },
+    {
+      "id": "framing-large",
+      "label": "Canvas 0.58 framing; no real camera-distance or perspective change",
+      "operation": {
+        "id": "framing-large",
+        "label": "Canvas 0.58 framing; no real camera-distance or perspective change",
+        "scale": 0.58,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 1
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 1.6325706043535622,
+        "pitch": 1.545382946654597,
+        "roll": 1.152162912800358
+      },
+      "qualityPose": {
+        "yaw": 1.6325706043535622,
+        "pitch": 1.545382946654597,
+        "roll": 1.152162912800358
+      },
+      "inferenceMilliseconds": 106,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.7961536075440632,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.4681389182806015,
+            "y": 0.31082533299922943
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.5259054601192474,
+            "y": 0.30976614356040955
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.4982254207134247,
+            "y": 0.3423587679862976
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.4987359642982483,
+            "y": 0.4077186584472656
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.42073170731707316,
+            "y": 0.306640625
+          },
+          {
+            "x": 0.4060975609756098,
+            "y": 0.2998046875
+          },
+          {
+            "x": 0.4024390243902439,
+            "y": 0.2919921875
+          },
+          {
+            "x": 0.4060975609756098,
+            "y": 0.2646484375
+          },
+          {
+            "x": 0.3951219512195122,
+            "y": 0.2578125
+          },
+          {
+            "x": 0.39634146341463417,
+            "y": 0.248046875
+          },
+          {
+            "x": 0.4024390243902439,
+            "y": 0.24609375
+          },
+          {
+            "x": 0.3975609756097561,
+            "y": 0.2412109375
+          },
+          {
+            "x": 0.39878048780487807,
+            "y": 0.236328125
+          },
+          {
+            "x": 0.40853658536585363,
+            "y": 0.2353515625
+          },
+          {
+            "x": 0.41585365853658535,
+            "y": 0.2451171875
+          },
+          {
+            "x": 0.4292682926829268,
+            "y": 0.236328125
+          },
+          {
+            "x": 0.4524390243902439,
+            "y": 0.234375
+          },
+          {
+            "x": 0.4926829268292683,
+            "y": 0.2080078125
+          },
+          {
+            "x": 0.5097560975609756,
+            "y": 0.2109375
+          },
+          {
+            "x": 0.5573170731707318,
+            "y": 0.20703125
+          },
+          {
+            "x": 0.5621951219512196,
+            "y": 0.2099609375
+          },
+          {
+            "x": 0.5634146341463414,
+            "y": 0.2177734375
+          },
+          {
+            "x": 0.5682926829268292,
+            "y": 0.21875
+          },
+          {
+            "x": 0.5609756097560976,
+            "y": 0.220703125
+          },
+          {
+            "x": 0.5634146341463414,
+            "y": 0.234375
+          },
+          {
+            "x": 0.5853658536585366,
+            "y": 0.2392578125
+          },
+          {
+            "x": 0.5853658536585366,
+            "y": 0.251953125
+          },
+          {
+            "x": 0.5658536585365853,
+            "y": 0.2509765625
+          },
+          {
+            "x": 0.5658536585365853,
+            "y": 0.2568359375
+          },
+          {
+            "x": 0.5756097560975609,
+            "y": 0.2666015625
+          },
+          {
+            "x": 0.5865853658536585,
+            "y": 0.26953125
+          },
+          {
+            "x": 0.5853658536585366,
+            "y": 0.2822265625
+          },
+          {
+            "x": 0.5695121951219512,
+            "y": 0.287109375
+          },
+          {
+            "x": 0.5792682926829268,
+            "y": 0.29296875
+          },
+          {
+            "x": 0.5768292682926829,
+            "y": 0.298828125
+          }
+        ],
+        "fringe": [
+          {
+            "x": 0.475,
+            "y": 0.24658203125
+          },
+          {
+            "x": 0.5274390243902439,
+            "y": 0.24951171875
+          }
+        ],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.6220340202649149,
+        "darkFraction": 0.03380335365853659,
+        "brightFraction": 0.0005525914634146341,
+        "sharpness": 0.03685579413467703
+      },
+      "knownReferenceToCurrent": {
+        "a": 0.58,
+        "b": 0,
+        "tx": 172.20000000000002,
+        "ty": 215.04000000000002,
+        "scale": 0.58,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1.7241379310344827,
+        "b": 0,
+        "tx": -296.89655172413796,
+        "ty": -370.75862068965523,
+        "scale": 1.7241379310344829,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1.7075930407994582,
+        "b": 0.016627716982461353,
+        "tx": -284.3838402236541,
+        "ty": -372.5058888792275,
+        "scale": 1.707673995222387,
+        "rotation": 0.009737209670313149,
+        "residual": 0.9495987150021334
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 0.92825,
+        "registrationProbeRMSEPixels": 1.276035,
+        "fittingResidualPixels": 0.949599,
+        "scaleError": -0.016464,
+        "rotationErrorDegrees": 0.557901,
+        "translationErrorPixels": 12.634116
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "distance",
+            "severity": "warning",
+            "message": "两张照片的面部占框比例差异较大",
+            "suggestion": "尽量保持相同镜头与拍摄距离，避免透视变化。"
+          },
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "distance",
+            "severity": "warning",
+            "message": "两张照片的面部占框比例差异较大",
+            "suggestion": "尽量保持相同镜头与拍摄距离，避免透视变化。"
+          }
+        ]
+      },
+      "regionalMetrics": [],
+      "sample": {
+        "path": "evaluation/samples/webkit/framing-large.jpg",
+        "bytes": 135957,
+        "sha256": "b104bf6e73f1622c658929b5673c818a3bb8633c0a6c4768e37698d2a183f158"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/framing-large.analysis.jpg",
+        "bytes": 135139,
+        "sha256": "589738fd49a0369e784eaba233d0f9c90e1ec6970d263ab752d23261c66d050c"
+      }
+    },
+    {
+      "id": "light-mild",
+      "label": "Canvas RGB multiplication 0.80; synthetic lighting",
+      "operation": {
+        "id": "light-mild",
+        "label": "Canvas RGB multiplication 0.80; synthetic lighting",
+        "scale": 1,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 0.8
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 1.7715557683760064,
+        "pitch": 4.226910850366039,
+        "roll": 0.8788871979787866
+      },
+      "qualityPose": {
+        "yaw": 1.7715557683760064,
+        "pitch": 4.226910850366039,
+        "roll": 0.8788871979787866
+      },
+      "inferenceMilliseconds": 108,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.8964103442247506,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.445586234331131,
+            "y": 0.17389269173145294
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.5455306768417358,
+            "y": 0.17287880182266235
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.4968893527984619,
+            "y": 0.2267664074897766
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.49700409173965454,
+            "y": 0.3393421769142151
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.3670731707317073,
+            "y": 0.1767578125
+          },
+          {
+            "x": 0.34512195121951217,
+            "y": 0.146484375
+          },
+          {
+            "x": 0.3463414634146341,
+            "y": 0.1142578125
+          },
+          {
+            "x": 0.36585365853658536,
+            "y": 0.087890625
+          },
+          {
+            "x": 0.3597560975609756,
+            "y": 0.07421875
+          },
+          {
+            "x": 0.38658536585365855,
+            "y": 0.0634765625
+          },
+          {
+            "x": 0.39390243902439026,
+            "y": 0.056640625
+          },
+          {
+            "x": 0.39146341463414636,
+            "y": 0.052734375
+          },
+          {
+            "x": 0.3951219512195122,
+            "y": 0.0478515625
+          },
+          {
+            "x": 0.4073170731707317,
+            "y": 0.048828125
+          },
+          {
+            "x": 0.4304878048780488,
+            "y": 0.0341796875
+          },
+          {
+            "x": 0.4658536585365854,
+            "y": 0.0244140625
+          },
+          {
+            "x": 0.5231707317073171,
+            "y": 0.0263671875
+          },
+          {
+            "x": 0.5548780487804879,
+            "y": 0.03515625
+          },
+          {
+            "x": 0.5902439024390244,
+            "y": 0.056640625
+          },
+          {
+            "x": 0.6036585365853658,
+            "y": 0.0556640625
+          },
+          {
+            "x": 0.6134146341463415,
+            "y": 0.060546875
+          },
+          {
+            "x": 0.6085365853658536,
+            "y": 0.064453125
+          },
+          {
+            "x": 0.6085365853658536,
+            "y": 0.072265625
+          },
+          {
+            "x": 0.625609756097561,
+            "y": 0.107421875
+          },
+          {
+            "x": 0.625609756097561,
+            "y": 0.1396484375
+          },
+          {
+            "x": 0.6365853658536585,
+            "y": 0.1513671875
+          },
+          {
+            "x": 0.6353658536585366,
+            "y": 0.1630859375
+          },
+          {
+            "x": 0.6170731707317073,
+            "y": 0.169921875
+          }
+        ],
+        "fringe": [
+          {
+            "x": 0.48353658536585364,
+            "y": 0.06591796875
+          },
+          {
+            "x": 0.5469512195121952,
+            "y": 0.06982421875
+          }
+        ],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.2350078391618619,
+        "darkFraction": 0.13993902439024392,
+        "brightFraction": 0,
+        "sharpness": 0.03120051876670688
+      },
+      "knownReferenceToCurrent": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1.0003000323440727,
+        "b": 0.0022187289982794453,
+        "tx": 0.21559140438180624,
+        "ty": -1.2100230446062596,
+        "scale": 1.0003024929819584,
+        "rotation": 0.0022180598700162167,
+        "residual": 0.2639908597945331
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 0.432346,
+        "registrationProbeRMSEPixels": 0.342495,
+        "fittingResidualPixels": 0.263991,
+        "scaleError": 0.000302,
+        "rotationErrorDegrees": 0.127085,
+        "translationErrorPixels": 1.229079
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "comparable",
+        "issues": []
+      },
+      "regionalMetrics": [
+        {
+          "kind": "outer",
+          "label": "外轮廓",
+          "signedOffset": -0.33728728344110404,
+          "absoluteOffset": 0.953202615810773,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": 0.025361541942259258,
+            "heightChangePercent": -1.9703849076637026
+          }
+        },
+        {
+          "kind": "fringe",
+          "label": "刘海下缘",
+          "signedOffset": -0.41064593196775506,
+          "absoluteOffset": 0.41333827309097254,
+          "referenceScale": 82.24449530911926,
+          "unit": "face-percent",
+          "projection": {
+            "widthChangePercent": -3.6912467298173435,
+            "heightChangePercent": 2.9143509321706063
+          }
+        }
+      ],
+      "sample": {
+        "path": "evaluation/samples/webkit/light-mild.jpg",
+        "bytes": 229734,
+        "sha256": "08443f0e266a31055c5ab167d81097a687e26e69fb7792bee16311fd551367db"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/light-mild.analysis.jpg",
+        "bytes": 229921,
+        "sha256": "815c372516dbfd33e3cc516319d87724b1ed0345cd5c75d9fecf6e6d433f3129"
+      }
+    },
+    {
+      "id": "light-severe-dark",
+      "label": "Canvas RGB multiplication 0.10; synthetic lighting",
+      "operation": {
+        "id": "light-severe-dark",
+        "label": "Canvas RGB multiplication 0.10; synthetic lighting",
+        "scale": 1,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 0.1
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": {
+        "yaw": 2.3249551754270033,
+        "pitch": 4.997649013210899,
+        "roll": 0.90075831761222
+      },
+      "qualityPose": {
+        "yaw": 2.3249551754270033,
+        "pitch": 4.997649013210899,
+        "roll": 0.90075831761222
+      },
+      "inferenceMilliseconds": 108,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。",
+          "未可靠识别刘海下缘，可以手工补画。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.8435541817851815,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.4454081803560257,
+            "y": 0.17368517816066742
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.5450384020805359,
+            "y": 0.1728571280837059
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.49804016947746277,
+            "y": 0.22531555593013763
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.497613787651062,
+            "y": 0.3371085524559021
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.3670731707317073,
+            "y": 0.171875
+          },
+          {
+            "x": 0.35853658536585364,
+            "y": 0.1669921875
+          },
+          {
+            "x": 0.33658536585365856,
+            "y": 0.1689453125
+          },
+          {
+            "x": 0.32195121951219513,
+            "y": 0.1435546875
+          },
+          {
+            "x": 0.3207317073170732,
+            "y": 0.1064453125
+          },
+          {
+            "x": 0.32439024390243903,
+            "y": 0.1015625
+          },
+          {
+            "x": 0.32439024390243903,
+            "y": 0.08984375
+          },
+          {
+            "x": 0.3207317073170732,
+            "y": 0.0810546875
+          },
+          {
+            "x": 0.33658536585365856,
+            "y": 0.0810546875
+          },
+          {
+            "x": 0.3426829268292683,
+            "y": 0.076171875
+          },
+          {
+            "x": 0.374390243902439,
+            "y": 0.0703125
+          },
+          {
+            "x": 0.38902439024390245,
+            "y": 0.056640625
+          },
+          {
+            "x": 0.40853658536585363,
+            "y": 0.052734375
+          },
+          {
+            "x": 0.41341463414634144,
+            "y": 0.044921875
+          },
+          {
+            "x": 0.43414634146341463,
+            "y": 0.033203125
+          },
+          {
+            "x": 0.4426829268292683,
+            "y": 0.0234375
+          },
+          {
+            "x": 0.44390243902439025,
+            "y": 0.015625
+          },
+          {
+            "x": 0.4378048780487805,
+            "y": 0.0126953125
+          },
+          {
+            "x": 0.4378048780487805,
+            "y": 0.0078125
+          },
+          {
+            "x": 0.44146341463414634,
+            "y": 0.0068359375
+          },
+          {
+            "x": 0.4548780487804878,
+            "y": 0.0087890625
+          },
+          {
+            "x": 0.4548780487804878,
+            "y": 0.0146484375
+          },
+          {
+            "x": 0.4451219512195122,
+            "y": 0.017578125
+          },
+          {
+            "x": 0.4524390243902439,
+            "y": 0.017578125
+          },
+          {
+            "x": 0.4573170731707317,
+            "y": 0.0234375
+          },
+          {
+            "x": 0.46707317073170734,
+            "y": 0.0205078125
+          },
+          {
+            "x": 0.4817073170731707,
+            "y": 0.0244140625
+          },
+          {
+            "x": 0.5231707317073171,
+            "y": 0.0234375
+          },
+          {
+            "x": 0.5390243902439025,
+            "y": 0.033203125
+          },
+          {
+            "x": 0.5548780487804879,
+            "y": 0.0341796875
+          },
+          {
+            "x": 0.5853658536585366,
+            "y": 0.05859375
+          },
+          {
+            "x": 0.598780487804878,
+            "y": 0.0625
+          },
+          {
+            "x": 0.6231707317073171,
+            "y": 0.0986328125
+          },
+          {
+            "x": 0.6317073170731707,
+            "y": 0.1064453125
+          },
+          {
+            "x": 0.6390243902439025,
+            "y": 0.107421875
+          },
+          {
+            "x": 0.6426829268292683,
+            "y": 0.130859375
+          },
+          {
+            "x": 0.6402439024390244,
+            "y": 0.138671875
+          },
+          {
+            "x": 0.6292682926829268,
+            "y": 0.140625
+          },
+          {
+            "x": 0.6268292682926829,
+            "y": 0.1494140625
+          },
+          {
+            "x": 0.6207317073170732,
+            "y": 0.1484375
+          },
+          {
+            "x": 0.6170731707317073,
+            "y": 0.1533203125
+          }
+        ],
+        "fringe": [],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.029490940997130777,
+        "darkFraction": 0.8633193597560975,
+        "brightFraction": 0,
+        "sharpness": 0.0005132152926930429
+      },
+      "knownReferenceToCurrent": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1.0116133316690183,
+        "b": 0.005876271649044892,
+        "tx": -3.7653096491644877,
+        "ty": -4.33004394919007,
+        "scale": 1.0116303986036523,
+        "rotation": 0.005808746655919246,
+        "residual": 0.4672948871505512
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 1.37959,
+        "registrationProbeRMSEPixels": 1.313149,
+        "fittingResidualPixels": 0.467295,
+        "scaleError": 0.01163,
+        "rotationErrorDegrees": 0.332817,
+        "translationErrorPixels": 5.738191
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "dark",
+            "severity": "warning",
+            "message": "当前照片整体偏暗",
+            "suggestion": "补充柔和正面光线，确认头发边缘清楚可见。"
+          },
+          {
+            "code": "blur",
+            "severity": "warning",
+            "message": "当前照片细节可能模糊",
+            "suggestion": "确认边界清楚，必要时重新拍摄。"
+          },
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "dark",
+            "severity": "warning",
+            "message": "当前照片整体偏暗",
+            "suggestion": "补充柔和正面光线，确认头发边缘清楚可见。"
+          },
+          {
+            "code": "blur",
+            "severity": "warning",
+            "message": "当前照片细节可能模糊",
+            "suggestion": "确认边界清楚，必要时重新拍摄。"
+          }
+        ]
+      },
+      "regionalMetrics": [],
+      "sample": {
+        "path": "evaluation/samples/webkit/light-severe-dark.jpg",
+        "bytes": 91715,
+        "sha256": "c032e90bfe298aaf59ee17b4455da758809518ce149e5c7cc8d25d362f01b91d"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/light-severe-dark.analysis.jpg",
+        "bytes": 92033,
+        "sha256": "04d3b9e911ea17b892f4a81abe5c84185dcff2ad72dfd3177b529f640992a54e"
+      }
+    },
+    {
+      "id": "light-severe-bright",
+      "label": "Canvas RGB multiplication 4.00 with clipping; synthetic lighting",
+      "operation": {
+        "id": "light-severe-bright",
+        "label": "Canvas RGB multiplication 4.00 with clipping; synthetic lighting",
+        "scale": 1,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 4
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": false,
+      "actualMeasuredPose": null,
+      "qualityPose": null,
+      "inferenceMilliseconds": 98,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "未找到可靠面部锚点，请人工标记双眼、鼻尖和下巴。",
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。",
+          "未可靠识别刘海下缘，可以手工补画。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "unavailable",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.8168445577591537,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.3670731707317073,
+            "y": 0.177734375
+          },
+          {
+            "x": 0.35121951219512193,
+            "y": 0.1591796875
+          },
+          {
+            "x": 0.3524390243902439,
+            "y": 0.12109375
+          },
+          {
+            "x": 0.3573170731707317,
+            "y": 0.111328125
+          },
+          {
+            "x": 0.3548780487804878,
+            "y": 0.0888671875
+          },
+          {
+            "x": 0.3621951219512195,
+            "y": 0.08203125
+          },
+          {
+            "x": 0.3621951219512195,
+            "y": 0.076171875
+          },
+          {
+            "x": 0.37317073170731707,
+            "y": 0.0673828125
+          },
+          {
+            "x": 0.37682926829268293,
+            "y": 0.052734375
+          },
+          {
+            "x": 0.3878048780487805,
+            "y": 0.046875
+          },
+          {
+            "x": 0.4,
+            "y": 0.0478515625
+          },
+          {
+            "x": 0.42073170731707316,
+            "y": 0.0322265625
+          },
+          {
+            "x": 0.4292682926829268,
+            "y": 0.0302734375
+          },
+          {
+            "x": 0.43902439024390244,
+            "y": 0.0185546875
+          },
+          {
+            "x": 0.46463414634146344,
+            "y": 0.017578125
+          },
+          {
+            "x": 0.4768292682926829,
+            "y": 0.01171875
+          },
+          {
+            "x": 0.49390243902439024,
+            "y": 0.017578125
+          },
+          {
+            "x": 0.5024390243902439,
+            "y": 0.009765625
+          },
+          {
+            "x": 0.5146341463414634,
+            "y": 0.0078125
+          },
+          {
+            "x": 0.5158536585365854,
+            "y": 0.00390625
+          },
+          {
+            "x": 0.5329268292682927,
+            "y": 0.0078125
+          },
+          {
+            "x": 0.5390243902439025,
+            "y": 0.013671875
+          },
+          {
+            "x": 0.5536585365853659,
+            "y": 0.013671875
+          },
+          {
+            "x": 0.5780487804878048,
+            "y": 0.02734375
+          },
+          {
+            "x": 0.5841463414634146,
+            "y": 0.0380859375
+          },
+          {
+            "x": 0.5865853658536585,
+            "y": 0.0625
+          },
+          {
+            "x": 0.5914634146341463,
+            "y": 0.06640625
+          },
+          {
+            "x": 0.5780487804878048,
+            "y": 0.07421875
+          }
+        ],
+        "fringe": [],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.6910519414604359,
+        "darkFraction": 0.019988567073170732,
+        "brightFraction": 0.3850228658536585,
+        "sharpness": 0.10800963550776793
+      },
+      "knownReferenceToCurrent": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": null,
+      "errors": {
+        "matchedAnchorCount": 0,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": null,
+        "registrationProbeRMSEPixels": null,
+        "fittingResidualPixels": null,
+        "scaleError": null,
+        "rotationErrorDegrees": null,
+        "translationErrorPixels": null
+      },
+      "qualityUnconfirmed": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "anchors",
+            "severity": "warning",
+            "message": "面部锚点不足，尚未完成对齐",
+            "suggestion": "在两张照片中确认至少三个分布充分的对应锚点。"
+          },
+          {
+            "code": "pose-unknown",
+            "severity": "info",
+            "message": "姿态需要人工确认",
+            "suggestion": "确认两张照片的转头、仰俯角度接近；大角度差异请重拍。"
+          },
+          {
+            "code": "exposure",
+            "severity": "warning",
+            "message": "当前照片高亮区域较多",
+            "suggestion": "避开逆光与过曝，检查发梢是否仍清晰。"
+          },
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "visual-only",
+        "issues": [
+          {
+            "code": "anchors",
+            "severity": "warning",
+            "message": "面部锚点不足，尚未完成对齐",
+            "suggestion": "在两张照片中确认至少三个分布充分的对应锚点。"
+          },
+          {
+            "code": "pose-unknown",
+            "severity": "info",
+            "message": "姿态需要人工确认",
+            "suggestion": "确认两张照片的转头、仰俯角度接近；大角度差异请重拍。"
+          },
+          {
+            "code": "exposure",
+            "severity": "warning",
+            "message": "当前照片高亮区域较多",
+            "suggestion": "避开逆光与过曝，检查发梢是否仍清晰。"
+          }
+        ]
+      },
+      "regionalMetrics": [],
+      "sample": {
+        "path": "evaluation/samples/webkit/light-severe-bright.jpg",
+        "bytes": 303901,
+        "sha256": "545e3afb22f7eb4dcce7f50f6da3c499372446b0ffe06013524406ae175cdf37"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/light-severe-bright.analysis.jpg",
+        "bytes": 297937,
+        "sha256": "23d54faae969954a47352f1a1d4397b0cfeef26fbf30e2fbece31ee4d035cc35"
+      }
+    },
+    {
+      "id": "simulated-yaw-35",
+      "label": "SIMULATED pose gate: override yaw=35; image and actual head angle unchanged",
+      "operation": {
+        "id": "simulated-yaw-35",
+        "label": "SIMULATED pose gate: override yaw=35; image and actual head angle unchanged",
+        "scale": 1,
+        "roll": 0,
+        "shiftX": 0,
+        "shiftY": 0,
+        "exposure": 1,
+        "simulatedYaw": 35
+      },
+      "dimensions": {
+        "width": 820,
+        "height": 1024
+      },
+      "simulatedPoseOnly": true,
+      "actualMeasuredPose": {
+        "yaw": 2.075343610351836,
+        "pitch": 3.60152420925785,
+        "roll": 0.8665888793218626
+      },
+      "qualityPose": {
+        "yaw": 35,
+        "pitch": 3.60152420925785,
+        "roll": 0.8665888793218626
+      },
+      "inferenceMilliseconds": 106,
+      "analysis": {
+        "status": "automatic",
+        "provider": "mediapipe-cpu-worker",
+        "version": "tasks-vision@0.10.32/face-f16-v1/hair-f32-v1/contours-v1",
+        "warnings": [
+          "自动轮廓是候选线，请确认外轮廓；刘海和鬓角尤其需要人工核对。"
+        ],
+        "provenance": {
+          "contractVersion": 1,
+          "coordinateSpace": "oriented-image-normalized",
+          "inputSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "inferenceSize": {
+            "width": 820,
+            "height": 1024
+          },
+          "confidence": {
+            "face": "detected",
+            "contours": "candidate",
+            "calibrated": false,
+            "hairMean": 0.898492373156572,
+            "hairThreshold": 0.55
+          }
+        }
+      },
+      "anchors": [
+        {
+          "id": "leftEye",
+          "label": "画面左眼",
+          "point": {
+            "x": 0.44531941413879395,
+            "y": 0.17371436953544617
+          }
+        },
+        {
+          "id": "rightEye",
+          "label": "画面右眼",
+          "point": {
+            "x": 0.5456123948097229,
+            "y": 0.17289775609970093
+          }
+        },
+        {
+          "id": "nose",
+          "label": "鼻尖",
+          "point": {
+            "x": 0.49673670530319214,
+            "y": 0.226126030087471
+          }
+        },
+        {
+          "id": "chin",
+          "label": "下巴",
+          "point": {
+            "x": 0.4964597523212433,
+            "y": 0.3392159640789032
+          }
+        }
+      ],
+      "contours": {
+        "outer": [
+          {
+            "x": 0.3670731707317073,
+            "y": 0.1787109375
+          },
+          {
+            "x": 0.3597560975609756,
+            "y": 0.1630859375
+          },
+          {
+            "x": 0.348780487804878,
+            "y": 0.15625
+          },
+          {
+            "x": 0.34512195121951217,
+            "y": 0.1474609375
+          },
+          {
+            "x": 0.348780487804878,
+            "y": 0.134765625
+          },
+          {
+            "x": 0.3463414634146341,
+            "y": 0.1142578125
+          },
+          {
+            "x": 0.3573170731707317,
+            "y": 0.0908203125
+          },
+          {
+            "x": 0.36341463414634145,
+            "y": 0.087890625
+          },
+          {
+            "x": 0.3573170731707317,
+            "y": 0.0810546875
+          },
+          {
+            "x": 0.3597560975609756,
+            "y": 0.07421875
+          },
+          {
+            "x": 0.374390243902439,
+            "y": 0.0703125
+          },
+          {
+            "x": 0.3926829268292683,
+            "y": 0.0576171875
+          },
+          {
+            "x": 0.3926829268292683,
+            "y": 0.0458984375
+          },
+          {
+            "x": 0.4073170731707317,
+            "y": 0.046875
+          },
+          {
+            "x": 0.4378048780487805,
+            "y": 0.03125
+          },
+          {
+            "x": 0.4658536585365854,
+            "y": 0.0244140625
+          },
+          {
+            "x": 0.5024390243902439,
+            "y": 0.0234375
+          },
+          {
+            "x": 0.5329268292682927,
+            "y": 0.029296875
+          },
+          {
+            "x": 0.5609756097560976,
+            "y": 0.037109375
+          },
+          {
+            "x": 0.5914634146341463,
+            "y": 0.0576171875
+          },
+          {
+            "x": 0.6109756097560975,
+            "y": 0.060546875
+          },
+          {
+            "x": 0.6060975609756097,
+            "y": 0.0634765625
+          },
+          {
+            "x": 0.6060975609756097,
+            "y": 0.0732421875
+          },
+          {
+            "x": 0.6121951219512195,
+            "y": 0.078125
+          },
+          {
+            "x": 0.6268292682926829,
+            "y": 0.1083984375
+          },
+          {
+            "x": 0.6268292682926829,
+            "y": 0.138671875
+          },
+          {
+            "x": 0.6317073170731707,
+            "y": 0.1484375
+          },
+          {
+            "x": 0.6365853658536585,
+            "y": 0.1494140625
+          },
+          {
+            "x": 0.6353658536585366,
+            "y": 0.1630859375
+          },
+          {
+            "x": 0.6219512195121951,
+            "y": 0.1650390625
+          },
+          {
+            "x": 0.6158536585365854,
+            "y": 0.169921875
+          }
+        ],
+        "fringe": [
+          {
+            "x": 0.48109756097560974,
+            "y": 0.06591796875
+          },
+          {
+            "x": 0.5469512195121952,
+            "y": 0.06982421875
+          }
+        ],
+        "leftSideburn": [],
+        "rightSideburn": []
+      },
+      "stats": {
+        "luminance": 0.29367605729909646,
+        "darkFraction": 0.09988567073170732,
+        "brightFraction": 0.002305640243902439,
+        "sharpness": 0.048474264784615854
+      },
+      "knownReferenceToCurrent": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "knownCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "estimatedCurrentToReference": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 0,
+        "scale": 1,
+        "rotation": 0,
+        "residual": 0
+      },
+      "errors": {
+        "matchedAnchorCount": 4,
+        "referenceFaceScalePixels": 82.244495,
+        "rawLandmarkReprojectionRMSEPixels": 0,
+        "registrationProbeRMSEPixels": 0,
+        "fittingResidualPixels": 0,
+        "scaleError": 0,
+        "rotationErrorDegrees": 0,
+        "translationErrorPixels": 0
+      },
+      "qualityUnconfirmed": {
+        "status": "retake",
+        "issues": [
+          {
+            "code": "pose",
+            "severity": "block",
+            "message": "转头或仰俯角度明显不一致",
+            "suggestion": "参考喜欢照片的姿态重新拍摄，二维旋转不能恢复被遮挡的轮廓。"
+          },
+          {
+            "code": "reference",
+            "severity": "info",
+            "message": "喜欢的轮廓尚未确认",
+            "suggestion": "先检查并确认目标轮廓。"
+          },
+          {
+            "code": "confirmation",
+            "severity": "info",
+            "message": "双方轮廓、视角与面部锚点尚未确认",
+            "suggestion": "在校准步骤检查双方轮廓、面部重合、角度和拍摄距离。"
+          }
+        ]
+      },
+      "qualityWithSimulatedConfirmation": {
+        "status": "retake",
+        "issues": [
+          {
+            "code": "pose",
+            "severity": "block",
+            "message": "转头或仰俯角度明显不一致",
+            "suggestion": "参考喜欢照片的姿态重新拍摄，二维旋转不能恢复被遮挡的轮廓。"
+          }
+        ]
+      },
+      "regionalMetrics": [],
+      "sample": {
+        "path": "evaluation/samples/webkit/simulated-yaw-35.jpg",
+        "bytes": 253606,
+        "sha256": "44f6161d2b2836eb7599cf7bd0478b258f3b89daf7ef427fce31497f879e8681"
+      },
+      "analysisInput": {
+        "path": "evaluation/samples/webkit/simulated-yaw-35.analysis.jpg",
+        "bytes": 252931,
+        "sha256": "180592844daf897de43273854a0c4e6dc72df340288da081577e2965397d1ec1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "tasksVisionVersion": "0.10.32",
+  "assets": [
+    {
+      "path": "models/face_landmarker.task",
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+      "bytes": 3758596,
+      "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+    },
+    {
+      "path": "models/hair_segmenter.tflite",
+      "url": "https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/1/hair_segmenter.tflite",
+      "bytes": 781618,
+      "sha256": "2628cf3ce5f695f604cbea2841e00befcaa3624bf80caf3664bef2656d59bf84"
+    },
+    {
+      "path": "vendor/mediapipe/vision_wasm_internal.js",
+      "bytes": 204816,
+      "sha256": "6f6b86509cf9e163ea1cfec7edc8cf53732699c04781e4c21c557c1ba402310e"
+    },
+    {
+      "path": "vendor/mediapipe/vision_wasm_internal.wasm",
+      "bytes": 11453626,
+      "sha256": "cb3ec20026a9aecc2a81a93c25630ceb5389297ddb7a5f0bd61dd09cde606b9b"
+    },
+    {
+      "path": "vendor/mediapipe/vision_wasm_nosimd_internal.js",
+      "bytes": 204669,
+      "sha256": "9f8fc960e363f0fb2f42f7937b97ae9cf9a5630490f71031fa90caa9bb121938"
+    },
+    {
+      "path": "vendor/mediapipe/vision_wasm_nosimd_internal.wasm",
+      "bytes": 10647962,
+      "sha256": "924274fcd5ac8985f6570a8573e7971b7bd2d580ba1b8f3beb0ba8f95db6347c"
+    }
+  ]
+}
